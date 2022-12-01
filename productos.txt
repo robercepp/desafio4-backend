@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Libreta de Chicas Gamer",
+    "price": 12.5,
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/react-34755-2022-fecd4.appspot.com/o/resources%2Fimagenes%2Fchicasgamer.webp?alt=media&token=cd2afa50-c307-4573-8209-cda00b67814e",
+    "id": 1
+  },
+  {
+    "title": "Libreta de Six Fanarts",
+    "price": 10.5,
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/react-34755-2022-fecd4.appspot.com/o/resources%2Fimagenes%2Fsixfanarts.webp?alt=media&token=695eaf91-f7d0-4b58-9289-141322b92248",
+    "id": 2
+  },
+  {
+    "title": "Libreta de Lulu Martins",
+    "price": 11,
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/react-34755-2022-fecd4.appspot.com/o/resources%2Fimagenes%2Flulumartins.webp?alt=media&token=34b1493c-4428-4576-a999-5c1b4a5e7e6e",
+    "id": 3
+  }
+]
