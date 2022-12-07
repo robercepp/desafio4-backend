@@ -42,7 +42,13 @@ module.exports = class Contenedor {
         const data = JSON.parse(file)
         const ids = data.map(producto => producto.id)
         const idMaximo = Math.max(...ids)
-        if(idMaximo == -Infinity ) {
+        if(!object.title){
+          return {error: 'no se agregó un nombre. el producto no fue guardado'}
+        } else if (!object.price) {
+          return {error: 'no se agregó un precio. el producto no fue guardado'}
+        } else if (!object.thumbnail){
+          return {error: 'no se agregó un thumbnail. el producto no fue guardado'}
+        } else if(idMaximo == -Infinity ) {
             agregar.id = 1
             data.push(agregar)
             await fs.promises.writeFile(this.archivo, JSON.stringify(data, null, 2))
@@ -66,7 +72,13 @@ async update(object){
     const index = data.findIndex(producto => producto.id == object.id)
     if (index == -1) {
       return {error: 'producto no encontrado'}
-    } else {
+    } else if(!object.title){
+      return {error: 'atención, no se ha introducido un nombre'}
+  } else if(!object.price) {
+      return {error: 'atención, no se ha introducido un precio'}
+  } else if(!object.thumbnail){
+      return {error: 'atención, no se ha introducido un thumbnail'}
+  } else {
       data.splice (index, 1, object)
       await fs.promises.writeFile(this.archivo, JSON.stringify(data, null, 2))
     }

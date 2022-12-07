@@ -20,6 +20,7 @@ const catalogo = new Contenedor("./productos.txt")
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/api/productos', router)
+app.use(express.static('public'))
 
 //router
 router.get('/', async (req, res) =>{
@@ -36,34 +37,16 @@ router.get('/:id', async (req, res) =>{
 router.post('/', async (req, res) => {
     let {title, price, thumbnail} = req.body
     let productoNuevo = {'title': title, 'price': parseFloat(price), 'thumbnail': thumbnail}
-    if(!title){
-        console.error("atención, no se ha introducido un nombre")
-    } else if(!price) {
-        console.error("atención, no se ha introducido un precio")
-    } else if(!thumbnail){
-        console.error("atención, no se ha introducido un thumbnail")
-    } else {
-        const resultado = await catalogo.save(productoNuevo)
-        return res.send(resultado)
-    }
+    const resultado = await catalogo.save(productoNuevo)
+    return res.send(resultado)
 })
 
 router.put('/:id', async (req, res)=>{
     let {title, price, thumbnail} = req.body
     let {id} = req.params
     let productoModificado = {'title': title, 'price': price, 'thumbnail': thumbnail, 'id': parseInt(id)}
-    if(!title){
-        console.error("atención, no se ha introducido un nombre")
-    } else if(!price) {
-        console.error("atención, no se ha introducido un precio")
-    } else if(!thumbnail){
-        console.error("atención, no se ha introducido un thumbnail")
-    } else if (!id) {
-        console.error("atención, no se ha introducido un thumbnail")
-    } else {
-        const resultado = await catalogo.update(productoModificado)
-        return res.send(resultado)
-    }
+    const resultado = await catalogo.update(productoModificado)
+    return res.send(resultado)
 })
 
 router.delete('/:id', async (req, res)=>{
